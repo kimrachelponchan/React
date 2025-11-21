@@ -10,4 +10,7 @@
     .button-style2{
         @apply w-20 h-10 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-extrabold cursor-pointer hover:bg-gray-500
     }
+    .button-style3{
+        @apply bg-blue-300 rounded-xl px-5 py-1 font-bold
+    }
 }

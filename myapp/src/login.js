@@ -19,7 +19,7 @@ export const Login = () => {
 
 
     async function handleSubmit (){
-        await axios.post('http://localhost:5000/login', userInfo);
+        await axios.post('http://localhost:5000/api/login', userInfo);
     }
 
 
