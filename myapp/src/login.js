@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 
 
@@ -9,17 +9,24 @@ export const Login = () => {
         password : ''
     })
 
+    useEffect(()=>{
+        console.log(userInfo)
+    },[userInfo])
+
+    
     function handleInput(e){
         const {name, value} = e.target;
-        console.log(value);
         setUseinfo((prev) => ({...prev, [name] : value }));
-        console.log(userInfo)
+        console.log(value);
 
     }
 
 
     async function handleSubmit (){
-        await axios.post('http://localhost:5000/api/login', userInfo);
+        const result = await axios.post('http://localhost:5000/api/login', userInfo);
+        if(result){
+            console.log(result.data);
+        }
     }
 
 
