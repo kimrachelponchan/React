@@ -1,5 +1,7 @@
 import db from "../config/db.js";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
 // 사용자의 상호작용에 의한 로직 정리
 export const login = async (req, res) => {
@@ -41,9 +43,15 @@ export const login = async (req, res) => {
 
       if (isMatch) {
         console.log("로그인 성공!");
+
+        // 토큰 발급
+        const token = jwt.sign({ id: row[0].user_id }, process.env.JWT_SECRET, {
+          expiresIn: process.env.JWT_EXPIRES_IN,
+        });
+
         return res
           .status(200)
-          .json({ msg: "비밀번호가 일치합니다.", pw_check: true });
+          .json({ msg: "비밀번호가 일치합니다.", pw_check: true, token });
       } else {
         console.log("로그인 실패ㅜㅜ");
         return res

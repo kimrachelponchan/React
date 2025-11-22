@@ -35,6 +35,7 @@ export const Login = () => {
     } else if (result.data.pw_check === false) {
       alert(result.data.msg);
     } else {
+      localStorage.setItem("token", result.data.token);
       // 예외 처리를 통과하면 홈으로 이동
       navigate("/home");
     }
