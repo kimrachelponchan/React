@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const navigate = useNavigate();
 
   const [userInfo, setUseinfo] = useState({
-    id: "",
-    password: "",
+    id: '',
+    password: '',
   });
 
   useEffect(() => {
@@ -35,9 +35,9 @@ export const Login = () => {
     } else if (result.data.pw_check === false) {
       alert(result.data.msg);
     } else {
-      localStorage.setItem("token", result.data.token);
+      localStorage.setItem('access_token', result.data.access_token);
       // 예외 처리를 통과하면 홈으로 이동
-      navigate("/home");
+      navigate('/home');
     }
   };
 
